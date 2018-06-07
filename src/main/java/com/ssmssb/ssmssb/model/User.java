@@ -5,7 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user")
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
@@ -20,21 +20,22 @@ public class Users {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public Users() {
+
+    public User() {
     }
 
-    public Users(String username, String password, int isActive, Set<Role> roles) {
+    public User(String username, String password, int isActive, Set<Role> roles) {
         this.username = username;
         this.password = password;
         this.isActive = isActive;
         this.roles = roles;
     }
 
-    public Users(Users users) {
-        this.username = users.getUsername();
-        this.password = users.getPassword();
-        this.isActive = users.getIsActive();
-        this.roles = users.getRoles();
+    public User(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.isActive = user.getIsActive();
+        this.roles = user.getRoles();
     }
 
     public Integer getUserId() {
